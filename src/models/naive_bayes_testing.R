@@ -3,7 +3,7 @@
 
 library(e1071)
 
-cars = read.csv("car.data", sep = ",")
+cars = read.csv("../../data/raw/car.data", sep = ",")
 
 carsSample = sample(2, 1728, replace = T, prob = c(0.7, 0.3))
 carsTrain = cars[carsSample == 1,]
