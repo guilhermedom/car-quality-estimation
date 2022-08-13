@@ -6,19 +6,19 @@ cars = read.csv("car.data", sep = ",")
 
 NBmodel = naiveBayes(class ~ ., cars)
 
-buying = unique(cars$buying)
-maintenance = unique(cars$maint)
-doors = unique(cars$doors)
-persons = unique(cars$persons)
-lug_boot = unique(cars$lug_boot)
-safety = unique(cars$safety)
+buying = c("Low" = "low", "Medium" = "med", "High" = "high", "Very high" = "vhigh")
+maintenance = c("Low" = "low", "Medium" = "med", "High" = "high", "Very high" = "vhigh")
+doors = c("Two" = "2", "Three" = "3", "Four" = "4", "More than four" = "5more")
+persons = c("Two" = "2", "Four" = "4", "More than four" = "more")
+lug_boot = c("Small" = "small", "Medium" = "med", "Big" = "big")
+safety = c("Low" = "low", "Medium" = "med", "High" = "high")
 
 # Define UI for application
 ui = fluidPage(
     theme = shinytheme("cyborg"),
 
     # Application title
-    titlePanel(h1(align = "center", "Car Quality Estimation with Naive Bayes")),
+    titlePanel(h1(align = "center", "Car Quality Estimation")),
     helpText(align = "center", "Input informations about the car and click the \'Estimate!\' button to have a car quality estimation."),
     
     br(),
