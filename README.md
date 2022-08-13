@@ -2,6 +2,10 @@
 
 Web app to estimate car quality based on the car properties informed by the user.
 
+### User Interface Sample
+
+![ui_car-quality-estimation](https://user-images.githubusercontent.com/33037020/184465749-b85da4fe-bd71-4465-acd0-73c587efec67.JPG)
+
 ### Features in This App
 * The model is trained using a file given along with the app (in the data folder of this repository). Therefore, the user does not need to input any files in the app;
 * The app user can select 6 different variables considering the car to evaluate:
