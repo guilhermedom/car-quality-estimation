@@ -18,7 +18,8 @@ ui = fluidPage(
     theme = shinytheme("cyborg"),
 
     # Application title
-    titlePanel(h1(align = "center", "Car Quality Estimation")),
+    titlePanel(h1(align = "center", "Car Quality Estimation"),
+               windowTitle = "Car Quality Estimation"),
     helpText(align = "center", "Input informations about the car and click the \'Estimate!\' button to have a car quality estimation."),
     
     br(),
