@@ -2,10 +2,14 @@ library(shiny)
 library(shinythemes)
 library(e1071)
 
+# Read dataset with car qualities to learn from.
 cars = read.csv("car.data", sep = ",")
 
+# Simple Naive Bayes model from the e1071 package.
 NBmodel = naiveBayes(class ~ ., cars)
 
+# Named lists where selectable input names to show in UI are linked with the
+# dataset column names.
 buying = c("Low" = "low", "Medium" = "med", "High" = "high",
            "Very high" = "vhigh")
 maintenance = c("Low" = "low", "Medium" = "med", "High" = "high",
@@ -16,11 +20,12 @@ persons = c("Two" = "2", "Four" = "4", "More than four" = "more")
 lug_boot = c("Small" = "small", "Medium" = "med", "Big" = "big")
 safety = c("Low" = "low", "Medium" = "med", "High" = "high")
 
-# Define UI for application
+# Define UI for application.
 ui = fluidPage(
+    # Set theme for UI.
     theme = shinytheme("cyborg"),
 
-    # Application title
+    # Application title.
     titlePanel(h1(align = "center", "Car Quality Estimation"),
                windowTitle = "Car Quality Estimation"),
     helpText(align = "center", "Input informations about the car and click the
@@ -52,8 +57,9 @@ ui = fluidPage(
 
 )
 
-# Define server logic
+# Define server logic.
 server = function(input, output) {
+    # All back end code will run once the "Estimate!" button is clicked.
     observeEvent(input$estimateButtonID, {
         carToPredict = data.frame("buying" = input$buyingID,
                                   "maintenance" = input$maintenanceID,
@@ -63,6 +69,8 @@ server = function(input, output) {
                                   "safety" = input$safetyID)
         
         prediction = as.character(predict(NBmodel, carToPredict))
+        
+        # Rename predicted classes to make them more clear in the UI.
         prediction[prediction == "acc"] = "acceptable."
         prediction[prediction == "unacc"] = "unacceptable."
         prediction[prediction == "good"] = "good."
@@ -75,5 +83,5 @@ server = function(input, output) {
     })
 }
 
-# Run the application 
+# Run the application.
 shinyApp(ui = ui, server = server)
