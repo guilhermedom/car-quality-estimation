@@ -3,7 +3,7 @@ library(shinythemes)
 library(e1071)
 
 # Read dataset with car qualities to learn from.
-cars = read.csv("car.data", sep = ",")
+cars = read.csv("../data/raw/car.data", sep = ",")
 
 # Simple Naive Bayes model from the e1071 package.
 NBmodel = naiveBayes(class ~ ., cars)
