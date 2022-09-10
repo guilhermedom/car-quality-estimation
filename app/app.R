@@ -35,6 +35,7 @@ ui = fluidPage(
     br(),
     
     fluidRow(
+        align = "center",
         column(4, selectInput("buyingID", "Price:",
                               choices = buying)),
         column(4, selectInput("maintenanceID", "Maintenance Level:",
@@ -43,6 +44,7 @@ ui = fluidPage(
                               choices = doors))
     ),
     fluidRow(
+        align = "center",
         column(4, selectInput("personsID", "Seating capacity:",
                               choices = persons)),
         column(4, selectInput("lug_bootID", "Luggage size:",
@@ -50,7 +52,12 @@ ui = fluidPage(
         column(4, selectInput("safetyID", "Safety:",
                               choices = safety))
     ),
+    
+    br(),
+    br(),
+    
     fluidRow(
+        align = "center",
         column(12, actionButton("estimateButtonID", "Estimate!"),
                h3(textOutput("resultID")))
     )
